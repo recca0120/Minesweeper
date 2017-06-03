@@ -1,0 +1,1 @@
+import { Minesweeper } from './minesweeper';
