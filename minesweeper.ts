@@ -6,8 +6,13 @@ export class Minesweeper
 {
     private map: Array<Array<boolean>>;
 
-    public constructor(mapCreator: MapCreator) {
-        this.map = mapCreator.create();
+    public constructor(private mapCreator: MapCreator) {}
+
+    public start(cols: number, rows: number, mines: number)
+    {
+        this.map = this.mapCreator.create(cols, rows, mines);
+
+        return this;
     }
 
     public getMap() {
