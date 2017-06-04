@@ -4,13 +4,7 @@ import { Point } from './point';
 
 describe('踩地雷', () => {
     function createMap(rows: number, cols: number) {
-        const map = [];
-        for (let i = 0; i < rows; i++) {
-            map[i] = [];
-            for (let j = 0; j < cols; j++) {
-                map[i][j] = new Point(false);
-            }
-        }
+        const map = (new Array(rows)).fill(null).map(() => (new Array(cols)).fill(new Point(false)));
 
         map[1][3] = new Point(true);
         map[2][6] = new Point(true);

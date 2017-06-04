@@ -10,7 +10,7 @@ describe('地圖', () => {
         let counts = 0;
         map.forEach((rows) => {
             rows.forEach((item) => {
-                if (item.isMine() == true) {
+                if (item.isMine() === true) {
                     counts++;
                 }
             });
