@@ -1,10 +1,12 @@
 import { Minesweeper } from './minesweeper';
+import { MapCreator } from './mapcreator';
+
 describe('踩地雷', () => {
     it('建立新遊戲', () => {
         const cols = 8;
         const rows = 5;
         const mines = 10;
-        const sweeper = new Minesweeper(cols, rows, mines);
+        const sweeper = new Minesweeper(new MapCreator(cols, rows, mines));
         const map = sweeper.getMap();
         let counts = 0;
         map.forEach((rows) => {
@@ -14,6 +16,7 @@ describe('踩地雷', () => {
                 }
             });
         })
+
         expect(map).toEqual(expect.any(Array));
         expect(map.length).toEqual(cols);
         expect(map[0].length).toEqual(rows);
