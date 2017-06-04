@@ -2,24 +2,41 @@ import { Minesweeper } from './minesweeper';
 import { MapCreator } from './mapcreator';
 
 describe('踩地雷', () => {
-    it('建立新遊戲', () => {
+    function createMap(rows: number, cols: number)
+    {
+        const map = [];
+        for (let i = 0; i < rows; i++) {
+            map[i] = [];
+            for (let j = 0; j < cols; j++) {
+                map[i][j] = false;
+            }
+        }
+
+        map[1][3] = true;
+        map[2][6] = true;
+        map[4][4] = true;
+
+        return map;
+    }
+
+    it('點擊地圖', () => {
         const cols = 8;
         const rows = 5;
-        const mines = 10;
-        const sweeper = new Minesweeper(new MapCreator);
-        const map = sweeper.start(cols, rows, mines).getMap();
-        let counts = 0;
-        map.forEach((rows) => {
-            rows.forEach((item) => {
-                if (item == true) {
-                    counts++;
-                }
-            });
-        })
+        const mines = 3;
+        const fakeMap = createMap(cols, rows);
 
-        expect(map).toEqual(expect.any(Array));
-        expect(map.length).toEqual(cols);
-        expect(map[0].length).toEqual(rows);
-        expect(counts).toEqual(mines);
-    });
+        const creator = new MapCreator;
+        spyOn(creator, 'create').and.returnValue(fakeMap);
+
+        const game = new Minesweeper(creator);
+        game.start(cols, rows, mines);
+
+        expect(creator.create).toHaveBeenCalled();
+        expect(game.click(1, 3)).toBe(true);
+        expect(game.click(2, 6)).toBe(true);
+        expect(game.click(4, 4)).toBe(true);
+
+        expect(game.click(0, 0)).toBe(false);
+        expect(game.click(3, 3)).toBe(false);
+    })
 });

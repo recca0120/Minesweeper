@@ -15,7 +15,7 @@ export class Minesweeper
         return this;
     }
 
-    public getMap() {
-        return this.map;
+    public click(x: number, y:number) {
+        return this.map[x][y];
     }
 }
