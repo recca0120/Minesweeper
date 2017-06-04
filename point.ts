@@ -1,7 +1,6 @@
-'use strict'
+'use strict';
 
-export class Point
-{
+export class Point {
     constructor(private _isMine: boolean) {}
 
     isMine() {

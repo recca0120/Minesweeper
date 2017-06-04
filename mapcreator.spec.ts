@@ -5,7 +5,7 @@ describe('地圖', () => {
         const cols = 8;
         const rows = 5;
         const mines = 10;
-        const creator = new MapCreator;
+        const creator = new MapCreator();
         const map = creator.create(cols, rows, mines);
         let counts = 0;
         map.forEach((rows) => {
@@ -14,7 +14,7 @@ describe('地圖', () => {
                     counts++;
                 }
             });
-        })
+        });
         expect(map).toEqual(expect.any(Array));
         expect(map[0].length).toEqual(cols);
         expect(map.length).toEqual(rows);

@@ -3,8 +3,7 @@ import { MapCreator } from './mapcreator';
 import { Point } from './point';
 
 describe('踩地雷', () => {
-    function createMap(rows: number, cols: number)
-    {
+    function createMap(rows: number, cols: number) {
         const map = [];
         for (let i = 0; i < rows; i++) {
             map[i] = [];
@@ -26,7 +25,7 @@ describe('踩地雷', () => {
         const mines = 3;
         const fakeMap = createMap(cols, rows);
 
-        const creator = new MapCreator;
+        const creator = new MapCreator();
         spyOn(creator, 'create').and.returnValue(fakeMap);
 
         const game = new Minesweeper(creator);
@@ -39,5 +38,5 @@ describe('踩地雷', () => {
 
         expect(game.click(0, 0)).toBe(false);
         expect(game.click(3, 3)).toBe(false);
-    })
+    });
 });

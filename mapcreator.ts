@@ -2,10 +2,8 @@
 
 import { Point } from './point';
 
-export class MapCreator
-{
-    public create(cols: number, rows: number, mines: number)
-    {
+export class MapCreator {
+    public create(cols: number, rows: number, mines: number) {
         const map = [];
         for (let i = 0; i < rows; i++) {
             map[i] = [];
@@ -28,15 +26,10 @@ export class MapCreator
     }
 
     protected transformPoint(map: Array<Array<boolean>>) {
-        return map.map((col) => {
-            return col.map((row) => {
-                return new Point(row);
-            })
-        });
+        return map.map(col => col.map(row => new Point(row)));
     }
 
-    protected random(n: number)
-    {
-        return Math.floor(Math.random()*n);
+    protected random(n: number) {
+        return Math.floor(Math.random() * n);
     }
 }
