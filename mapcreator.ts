@@ -1,5 +1,7 @@
 'use strict';
 
+import { Point } from './point';
+
 export class MapCreator
 {
     public create(cols: number, rows: number, mines: number)
@@ -22,7 +24,19 @@ export class MapCreator
             }
         }
 
-        return map;
+        return this.transformPoint(map);
+    }
+
+    protected transformPoint(map: Array<Array<boolean>>) {
+        const result = [];
+        map.forEach((col, i) => {
+            result[i] = [];
+            col.forEach((row, j) => {
+                result[i][j] = new Point(row);
+            })
+        });
+
+        return result;
     }
 
     protected random(n: number)

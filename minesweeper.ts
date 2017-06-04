@@ -16,6 +16,6 @@ export class Minesweeper
     }
 
     public click(x: number, y:number) {
-        return this.map[x][y];
+        return this.map[x][y].isMine();
     }
 }

@@ -1,5 +1,6 @@
 import { Minesweeper } from './minesweeper';
 import { MapCreator } from './mapcreator';
+import { Point } from './point';
 
 describe('踩地雷', () => {
     function createMap(rows: number, cols: number)
@@ -8,13 +9,13 @@ describe('踩地雷', () => {
         for (let i = 0; i < rows; i++) {
             map[i] = [];
             for (let j = 0; j < cols; j++) {
-                map[i][j] = false;
+                map[i][j] = new Point(false);
             }
         }
 
-        map[1][3] = true;
-        map[2][6] = true;
-        map[4][4] = true;
+        map[1][3] = new Point(true);
+        map[2][6] = new Point(true);
+        map[4][4] = new Point(true);
 
         return map;
     }
