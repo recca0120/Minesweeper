@@ -35,5 +35,12 @@ describe('踩地雷', () => {
 
         expect(game.click(0, 0)).toBe(false);
         expect(game.click(3, 3)).toBe(false);
+
+        expect(game.getPoint(1, 3).isClick()).toBe(true);
+        expect(game.getPoint(2, 6).isClick()).toBe(true);
+        expect(game.getPoint(4, 4).isClick()).toBe(true);
+
+        expect(game.getPoint(0, 0).isClick()).toBe(true);
+        expect(game.getPoint(3, 3).isClick()).toBe(true);
     });
 });

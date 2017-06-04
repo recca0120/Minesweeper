@@ -4,6 +4,8 @@ export class Point {
 
     private _isMine: boolean;
 
+    private _isClick = false;
+
     constructor(private x, private y, private map: Array<Array<boolean>>) {
         this._isMine = this.map[x][y];
     }
@@ -29,6 +31,16 @@ export class Point {
             console.log(this.getPosition(x, y), x, y);
             return this.getPosition(x, y);
         }).filter(x => x === true).length;
+    }
+
+    public click(click = true) {
+        this._isClick = click;
+
+        return this;
+    }
+
+    public isClick() {
+        return this._isClick;
     }
 
     protected getPosition(x: number, y: number) {

@@ -37,4 +37,13 @@ describe('點', () => {
         expect(point.isMine()).toBe(false);
         expect(point.getNumber()).toEqual(6);
     });
+
+    it('改變點擊狀態', () => {
+        const fakeMap = createMap();
+        const point = new Point(2, 2, fakeMap);
+
+        expect(point.isClick()).toBe(false);
+        point.click();
+        expect(point.isClick()).toBe(true);
+    });
 });

@@ -13,7 +13,11 @@ export class Minesweeper {
         return this;
     }
 
+    public getPoint(x: number, y: number) {
+        return this.map[x][y];
+    }
+
     public click(x: number, y:number) {
-        return this.map[x][y].isMine();
+        return this.getPoint(x, y).click().isMine();
     }
 }
