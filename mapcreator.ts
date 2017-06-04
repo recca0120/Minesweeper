@@ -27,7 +27,7 @@ export class MapCreator {
     }
 
     protected transformPoint(map: Array<Array<boolean>>) {
-        return map.map(col => col.map(row => new Point(row)));
+        return map.slice().map((col, x) => col.map((row, y) => new Point(x, y, map)));
     }
 
     protected random(n: number) {

@@ -4,13 +4,16 @@ import { Point } from './point';
 
 describe('踩地雷', () => {
     function createMap(rows: number, cols: number) {
-        const map = (new Array(rows)).fill(null).map(() => (new Array(cols)).fill(new Point(false)));
+        const map = (new Array(rows)).fill(null).map(() => (new Array(cols)).fill(false));
+        map[1][3] = true;
+        map[2][6] = true;
+        map[4][4] = true;
 
-        map[1][3] = new Point(true);
-        map[2][6] = new Point(true);
-        map[4][4] = new Point(true);
-
-        return map;
+        return map.slice().map((col, x) => {
+            return col.map((row, y) => {
+                return new Point(x, y, map);
+            }
+        });
     }
 
     it('點擊地圖', () => {
