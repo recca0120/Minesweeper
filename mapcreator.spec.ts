@@ -16,8 +16,8 @@ describe('地圖', () => {
             });
         })
         expect(map).toEqual(expect.any(Array));
-        expect(map.length).toEqual(cols);
-        expect(map[0].length).toEqual(rows);
+        expect(map[0].length).toEqual(cols);
+        expect(map.length).toEqual(rows);
         expect(counts).toEqual(mines);
     });
 });

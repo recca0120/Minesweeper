@@ -5,17 +5,17 @@ export class MapCreator
     public create(cols: number, rows: number, mines: number)
     {
         const map = [];
-        for (let i = 0; i < cols; i++) {
+        for (let i = 0; i < rows; i++) {
             map[i] = [];
-            for (let j = 0; j < rows; j++) {
+            for (let j = 0; j < cols; j++) {
                 map[i][j] = false;
             }
         }
 
         let counts = 0;
         while (counts < mines) {
-            const x = this.random(cols);
-            const y = this.random(rows);
+            const x = this.random(rows);
+            const y = this.random(cols);
             if (map[x][y] === false) {
                 map[x][y] = true;
                 counts++;
