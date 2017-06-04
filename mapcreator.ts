@@ -28,15 +28,11 @@ export class MapCreator
     }
 
     protected transformPoint(map: Array<Array<boolean>>) {
-        const result = [];
-        map.forEach((col, i) => {
-            result[i] = [];
-            col.forEach((row, j) => {
-                result[i][j] = new Point(row);
+        return map.map((col) => {
+            return col.map((row) => {
+                return new Point(row);
             })
         });
-
-        return result;
     }
 
     protected random(n: number)
