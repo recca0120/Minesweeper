@@ -1,9 +1,10 @@
 'use strict';
 
 import { MapCreator } from './mapcreator';
+import { Point } from './point';
 
 export class Minesweeper {
-    private map: Array<Array<boolean>>;
+    private map: Array<Array<Point>>;
 
     public constructor(private mapCreator: MapCreator) {}
 
