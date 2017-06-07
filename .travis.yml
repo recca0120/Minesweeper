@@ -4,4 +4,4 @@ node_js: 8.0.0
 
 before_install: npm i
 
-script: npm test
+script: npm test --coverage
