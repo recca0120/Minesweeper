@@ -2,16 +2,16 @@
 
 export class Point {
 
-    private _isMine: boolean;
+    private _isBomb: boolean;
 
     private _isClick = false;
 
     constructor(private x, private y, private map: Array<Array<boolean>>) {
-        this._isMine = this.map[x][y];
+        this._isBomb = this.map[x][y];
     }
 
-    public isMine() {
-        return this._isMine;
+    public isBomb() {
+        return this._isBomb;
     }
 
     public getNumber() {
