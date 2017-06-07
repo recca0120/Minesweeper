@@ -8,16 +8,13 @@ export class Point {
 
     private _isFlag = false;
 
+    public positions: Array<Array<number>>;
+
+    public _bombCounts: number;
+
     constructor(private x, private y, private map: Array<Array<boolean>>) {
         this._isBomb = this.map[x][y];
-    }
-
-    public isBomb() {
-        return this._isBomb;
-    }
-
-    public bombCounts() {
-        const positions = [
+        this.positions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
             [this.x + 1, this.y - 1],
@@ -27,11 +24,18 @@ export class Point {
             [this.x - 1, this.y + 1],
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1],
-        ];
-
-        return positions.map(([x, y]) => {
+        ].filter(([x, y]) => this.map[x] !== undefined && this.map[x][y] !== undefined);
+        this._bombCounts = this.positions.map(([x, y]) => {
             return this.getPosition(x, y);
-        }).filter(x => x === true).length;
+        }).filter(x => x === true).length
+    }
+
+    public isBomb() {
+        return this._isBomb;
+    }
+
+    public bombCounts() {
+        return this._bombCounts;
     }
 
     public click(click = true) {
@@ -55,10 +59,6 @@ export class Point {
     }
 
     protected getPosition(x: number, y: number) {
-        if (this.map[x] === undefined || this.map[x][y] === undefined) {
-            return null;
-        }
-
         return this.map[x][y];
     }
 }
