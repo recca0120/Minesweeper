@@ -2,9 +2,11 @@
 
 export class Point {
 
-    private _isBomb: boolean;
+    private _isBomb = false;
 
     private _isClick = false;
+
+    private _isFlag = false;
 
     constructor(private x, private y, private map: Array<Array<boolean>>) {
         this._isBomb = this.map[x][y];
@@ -14,7 +16,7 @@ export class Point {
         return this._isBomb;
     }
 
-    public getNumber() {
+    public bombCounts() {
         const positions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -41,6 +43,16 @@ export class Point {
 
     public isClick() {
         return this._isClick;
+    }
+
+    public flag(flag = true) {
+        this._isFlag = flag;
+
+        return this;
+    }
+
+    public isFlag() {
+        return this._isFlag;
     }
 
     protected getPosition(x: number, y: number) {

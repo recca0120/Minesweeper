@@ -18,24 +18,24 @@ describe('點', () => {
 
     it('是炸彈', () => {
         const fakeMap = createMap();
-        expect(new Point(1, 3, fakeMap).isMine()).toBe(true);
-        expect(new Point(2, 1, fakeMap).isMine()).toBe(true);
-        expect(new Point(4, 4, fakeMap).isMine()).toBe(true);
+        expect(new Point(1, 3, fakeMap).isBomb()).toBe(true);
+        expect(new Point(2, 1, fakeMap).isBomb()).toBe(true);
+        expect(new Point(4, 4, fakeMap).isBomb()).toBe(true);
     });
 
     it('非炸彈', () => {
         const fakeMap = createMap();
-        expect(new Point(1, 4, fakeMap).isMine()).toBe(false);
-        expect(new Point(2, 4, fakeMap).isMine()).toBe(false);
-        expect(new Point(3, 4, fakeMap).isMine()).toBe(false);
+        expect(new Point(1, 4, fakeMap).isBomb()).toBe(false);
+        expect(new Point(2, 4, fakeMap).isBomb()).toBe(false);
+        expect(new Point(3, 4, fakeMap).isBomb()).toBe(false);
     });
 
     it('計算炸彈數', () => {
         const fakeMap = createMap();
         const point = new Point(2, 2, fakeMap);
 
-        expect(point.isMine()).toBe(false);
-        expect(point.getNumber()).toEqual(6);
+        expect(point.isBomb()).toBe(false);
+        expect(point.bombCounts()).toEqual(6);
     });
 
     it('改變點擊狀態', () => {
@@ -45,5 +45,14 @@ describe('點', () => {
         expect(point.isClick()).toBe(false);
         point.click();
         expect(point.isClick()).toBe(true);
+    });
+
+    it('立標籤', () => {
+        const fakeMap = createMap();
+        const point = new Point(2, 2, fakeMap);
+
+        expect(point.isFlag()).toBe(false);
+        point.flag();
+        expect(point.isFlag()).toBe(true);
     });
 });
