@@ -30,7 +30,6 @@ export class Point {
         ];
 
         return positions.map(([x, y]) => {
-            console.log(this.getPosition(x, y), x, y);
             return this.getPosition(x, y);
         }).filter(x => x === true).length;
     }
