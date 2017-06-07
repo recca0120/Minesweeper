@@ -4,7 +4,7 @@ export class Point {
 
     private _isBomb = false;
 
-    private _isClick = false;
+    private _isOpen = false;
 
     private _isFlag = false;
 
@@ -35,13 +35,13 @@ export class Point {
     }
 
     public click(click = true) {
-        this._isClick = click;
+        this._isOpen = click;
 
         return this;
     }
 
-    public isClick() {
-        return this._isClick;
+    public isOpen() {
+        return this._isOpen;
     }
 
     public flag(flag = true) {

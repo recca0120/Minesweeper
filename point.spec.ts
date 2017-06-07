@@ -42,9 +42,9 @@ describe('點', () => {
         const fakeMap = createMap();
         const point = new Point(2, 2, fakeMap);
 
-        expect(point.isClick()).toBe(false);
+        expect(point.isOpen()).toBe(false);
         point.click();
-        expect(point.isClick()).toBe(true);
+        expect(point.isOpen()).toBe(true);
     });
 
     it('立標籤', () => {
